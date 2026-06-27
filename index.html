@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Кофейня «Бурмалда» | Меню</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+<div class="app">
+    <div class="container">
+        <!-- ШАПКА -->
+        <header class="header">
+            <div>
+                <div class="logo-title">Бурмалда</div>
+                <div class="logo-subtitle">Кофейня & пекарня</div>
+            </div>
+            <nav class="nav">
+                <a href="#promo" class="nav-link">Акции</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+                <a href="#" class="nav-link">Бронирование</a>
+            </nav>
+        </header>
+
+        <!-- ГЕРО (баннер с атмосферой) -->
+        <section class="hero">
+            <h1 class="hero-title">Меню</h1>
+            <p class="hero-description">Авторские напитки, уютная выпечка и натуральные десерты. Каждый ингредиент — с душой.</p>
+            <button class="hero-button" id="orderBtn">Заказать столик</button>
+        </section>
+
+        <!-- КАТЕГОРИИ МЕНЮ: интерактивные вкладки -->
+        <div class="category-tabs">
+            <button class="category-btn active" data-category="all">Всё меню</button>
+            <button class="category-btn" data-category="coffee">Кофе & напитки</button>
+            <button class="category-btn" data-category="food">Закуски & сэндвичи</button>
+            <button class="category-btn" data-category="desserts">Десерты & выпечка</button>
+        </div>
+
+        <!-- БЛОКИ МЕНЮ по категориям -->
+        <!-- 1) КОФЕ И НАПИТКИ -->
+        <div id="category-coffee" class="menu-category-section">
+            <h2 class="section-title">Ароматный кофе & напитки</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="Эспрессо «Терраса»" data-price="220">
+                    <div class="menu-item-title">Эспрессо «Терраса»</div>
+                    <div class="menu-item-description">Плотный, с нотами тёмного шоколада и лесного ореха. Двойная порция.</div>
+                    <button class="menu-item-price add-to-cart">220 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Капучино" data-price="290">
+                    <div class="menu-item-title">Капучино</div>
+                    <div class="menu-item-description">Идеальный баланс эспрессо, нежной молочной пенки и бархатистого вкуса.</div>
+                    <button class="menu-item-price add-to-cart">290 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Раф масала" data-price="340">
+                    <div class="menu-item-title">Раф масала</div>
+                    <div class="menu-item-description">Пряный раф с кардамоном, мускатом и щепоткой корицы. Веганская альтернатива.</div>
+                    <button class="menu-item-price add-to-cart">340 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Матча латте" data-price="350">
+                    <div class="menu-item-title">Матча латте</div>
+                    <div class="menu-item-description">Японский Matcha высшего сорта, молочная пена и лёгкая сладость.</div>
+                    <button class="menu-item-price add-to-cart">350 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Лимонад «Цитрус сад»" data-price="310">
+                    <div class="menu-item-title">Лимонад «Цитрус сад»</div>
+                    <div class="menu-item-description">Домашний лимонад с мятой, лемонграссом и свежим апельсином.</div>
+                    <button class="menu-item-price add-to-cart">310 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Тыквенный чизкейк латте" data-price="380">
+                    <div class="menu-item-title">Тыквенный чизкейк латте</div>
+                    <div class="menu-item-description">Пряный тыквенный сироп, сливки и корица — тепло осени в чашке.</div>
+                    <button class="menu-item-price add-to-cart">380 ₽</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2) ЗАКУСКИ И СЭНДВИЧИ (FOOD) -->
+        <div id="category-food" class="menu-category-section hidden-category">
+            <h2 class="section-title">Сытные закуски & сэндвичи</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="Сэндвич с ростбифом" data-price="480">
+                    <div class="menu-item-title">Сэндвич с ростбифом</div>
+                    <div class="menu-item-description">Нежный ростбиф, руккола, вяленые томаты и соус песто на чиабатте.</div>
+                    <button class="menu-item-price add-to-cart">480 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Тосканский тост" data-price="390">
+                    <div class="menu-item-title">Тосканский тост <span class="veg-icon">veg</span></div>
+                    <div class="menu-item-description">Цукини, баклажаны, печёный перец и крем из рикотты.</div>
+                    <button class="menu-item-price add-to-cart">390 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Брускетта с лососем" data-price="520">
+                    <div class="menu-item-title">Брускетта с лососем</div>
+                    <div class="menu-item-description">Слабосолёный лосось, сырный крем, каперсы и свежий укроп.</div>
+                    <button class="menu-item-price add-to-cart">520 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Сырная тарелка" data-price="590">
+                    <div class="menu-item-title">Сырная тарелка</div>
+                    <div class="menu-item-description">Три вида сыра (бри, дорблю, камамбер) с мёдом и орехами.</div>
+                    <button class="menu-item-price add-to-cart">590 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Киш с грибами" data-price="360">
+                    <div class="menu-item-title">Киш с грибами</div>
+                    <div class="menu-item-description">Песочное тесто, шампиньоны, сливочный соус и тимьян.</div>
+                    <button class="menu-item-price add-to-cart">360 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Омлет с трюфельным маслом" data-price="430">
+                    <div class="menu-item-title">Омлет с трюфельным маслом</div>
+                    <div class="menu-item-description">Воздушный омлет, пармезан, микрозелень и аромат белого трюфеля.</div>
+                    <button class="menu-item-price add-to-cart">430 ₽</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3) ДЕСЕРТЫ И ВЫПЕЧКА -->
+        <div id="category-desserts" class="menu-category-section hidden-category">
+            <h2 class="section-title">Сладкие мгновения</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="Торт «Медовик карамель»" data-price="420">
+                    <div class="menu-item-title">Торт «Медовик карамель»</div>
+                    <div class="menu-item-description">Нежные медовые коржи, солёная карамель, крем из сметаны и мусс.</div>
+                    <button class="menu-item-price add-to-cart">420 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Тарт татен с яблоками" data-price="370">
+                    <div class="menu-item-title">Тарт татен с яблоками</div>
+                    <div class="menu-item-description">Карамелизированные яблоки, слоёное тесто, ванильное мороженое.</div>
+                    <button class="menu-item-price add-to-cart">370 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Брауни с грецким орехом" data-price="290">
+                    <div class="menu-item-title">Брауни с грецким орехом</div>
+                    <div class="menu-item-description">Влажный шоколадный брауни, тающий центр и ореховая нотка.</div>
+                    <button class="menu-item-price add-to-cart">290 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Панна-котта «Ваниль-малина»" data-price="330">
+                    <div class="menu-item-title">Панна-котта «Ваниль-малина»</div>
+                    <div class="menu-item-description">Итальянский десерт с ягодным кули и свежей малиной.</div>
+                    <button class="menu-item-price add-to-cart">330 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Круассан с миндалём" data-price="260">
+                    <div class="menu-item-title">Круассан с миндалём</div>
+                    <div class="menu-item-description">Хрустящий слоёный круассан, миндальный крем и сахарная пудра.</div>
+                    <button class="menu-item-price add-to-cart">260 ₽</button>
+                </div>
+                <div class="menu-item" data-name="Чизкейк «Белый шоколад & маракуйя»" data-price="390">
+                    <div class="menu-item-title">Чизкейк «Белый шоколад & маракуйя»</div>
+                    <div class="menu-item-description">Нежный чизкейк на песочной основе, топинг из маракуйи.</div>
+                    <button class="menu-item-price add-to-cart">390 ₽</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ДОПОЛНИТЕЛЬНО: блок преимуществ -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-title">🌱 Зерно direct trade</div>
+                <div class="feature-text">Мы работаем напрямую с фермерами из Эфиопии и Коста-Рики, гарантируя качество.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">🧑‍🍳 Домашняя выпечка</div>
+                <div class="feature-text">Каждый круассан и десерт готовятся вручную нашей кондитерской с 6 утра.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">🚚 Бесплатная доставка</div>
+                <div class="feature-text">При заказе от 1500 ₽ в радиусе 3 км – привезём кофе и десерты тёплыми.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">🏆 Премия 2024</div>
+                <div class="feature-text">«Лучшая кофейня с авторской кухней» по версии городского гида.</div>
+            </div>
+        </div>
+
+        <!-- Блок "Специальное предложение" с якорем promo -->
+        <div id="promo" style="background: #f8efdf; border-radius: 36px; padding: 24px 32px; margin: 30px 0 20px; text-align: center; scroll-margin-top: 20px;">
+            <p style="font-weight: 600; color: #b45f2b; letter-spacing: 1px;">★ КОМБО-ПРЕДЛОЖЕНИЕ ★</p>
+            <p style="font-size: 1.1rem; margin-top: 8px;">Любой сэндвич + капучино = <strong style="color:#3b2a1f; font-size:1.2rem;">690 ₽</strong> <span style="background: #fff0e0; padding: 2px 12px; border-radius: 30px; margin-left: 12px;">экономия 110₽</span></p>
+            <p style="margin-top: 12px; font-size: 0.9rem; color: #6b4c31;">Действует ежедневно с 12:00 до 16:00</p>
+        </div>
+    </div>
+
+    <!-- Подвал с якорем contacts -->
+    <footer class="footer" id="contacts">
+        <div>
+            <div class="footer-title">Кофейня «Бурмалда»</div>
+            <div class="footer-address">📍 ул. Садовая, 15, Москва</div>
+            <div class="footer-hours">⏰ Пн–Вс: 8:00 – 23:00</div>
+            <a href="tel:+79684979821" class="footer-phone">📞 +7 (968) 497-98-21</a>
+            <a href="mailto:in.chernyshov@yandex.ru"class="footer-email">✉️ in.chernyshov@yandex.ru</a>
+        </div>
+        <div>
+            <div class="footer-title">Мы в соцсетях</div>
+            <div class="footer-address">Instagram · Telegram · VK</div>
+            <div class="footer-hours">Акции и новинки там же</div>
+        </div>
+        <div class="footer-copyright">
+            © 2026, Бурмалда. Все права защищены.
+        </div>
+    </footer>
+</div>
+
+<!-- Кнопка корзины -->
+<button class="cart-button" id="cartButton">
+    <span class="cart-icon">🛒</span>
+    <span class="cart-count" id="cartCount">0</span>
+    <span class="cart-total" id="cartTotal">0 ₽</span>
+</button>
+
+<!-- Модальное окно корзины -->
+<div class="cart-modal-overlay" id="cartModal">
+    <div class="cart-modal">
+        <button class="cart-close-btn" id="closeCartModal">✕</button>
+        <h2 class="cart-modal-title">🛒 Корзина</h2>
+        <p class="cart-modal-subtitle">Ваши выбранные позиции</p>
+        <div id="cartContent">
+            <div class="cart-empty" id="cartEmpty">
+                <div class="cart-empty-icon">🛒</div>
+                <p>Корзина пуста</p>
+                <p style="font-size: 0.9rem; margin-top: 8px;">Выберите блюда из меню</p>
+            </div>
+            <ul class="cart-items" id="cartItems" style="display: none;"></ul>
+            <div class="cart-total-row" id="cartTotalRow" style="display: none;">
+                <span>Итого:</span>
+                <span class="cart-total-price" id="cartTotalPrice">0 ₽</span>
+            </div>
+            <button class="cart-checkout-btn" id="checkoutBtn" style="display: none;">Оформить заказ</button>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно бронирования -->
+<div class="modal-overlay" id="bookingModal">
+    <div class="modal">
+        <button class="modal-close" id="closeModal">✕</button>
+        
+        <!-- Форма -->
+        <div class="modal-form" id="modalForm">
+            <h2 class="modal-title">Бронирование столика</h2>
+            <p class="modal-subtitle">Заполните форму, и мы ждём вас в «Бурмалде»!</p>
+            
+            <div class="form-group">
+                <label for="guestName">Ваше имя</label>
+                <input type="text" id="guestName" placeholder="Например: Александр" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="guestPhone">Номер телефона</label>
+                <input type="tel" id="guestPhone" placeholder="+7 (___)-___-__-__" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="guestDate">Дата</label>
+                    <input type="date" id="guestDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="guestTime">Время</label>
+                    <input type="time" id="guestTime" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="guestCount">Количество гостей</label>
+                <select id="guestCount">
+                    <option value="1">1 гость</option>
+                    <option value="2" selected>2 гостя</option>
+                    <option value="3">3 гостя</option>
+                    <option value="4">4 гостя</option>
+                    <option value="5">5 гостей</option>
+                    <option value="6">6 гостей</option>
+                    <option value="7">7 гостей</option>
+                    <option value="8">8 гостей</option>
+                    <option value="9">9 гостей</option>
+                    <option value="10">10 гостей</option>
+                </select>
+            </div>
+            
+            <button class="modal-submit" id="submitBooking">Забронировать</button>
+        </div>
+        
+        <!-- Сообщение об успехе -->
+        <div class="modal-success" id="modalSuccess">
+            <div class="modal-success-icon">✅</div>
+            <div class="modal-success-title">Столик забронирован!</div>
+            <div class="modal-success-text">Мы ждём вас в «Бурмалде». <br>Наш администратор свяжется с вами для подтверждения.</div>
+            <button class="modal-submit" id="closeSuccess" style="margin-top: 24px;">Отлично!</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ===== КОРЗИНА =====
+    (function() {
+        let cart = [];
+        
+        // Элементы
+        const cartButton = document.getElementById('cartButton');
+        const cartModal = document.getElementById('cartModal');
+        const closeCartBtn = document.getElementById('closeCartModal');
+        const cartItems = document.getElementById('cartItems');
+        const cartEmpty = document.getElementById('cartEmpty');
+        const cartTotalRow = document.getElementById('cartTotalRow');
+        const cartTotalPrice = document.getElementById('cartTotalPrice');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        
+        // Обновление отображения корзины
+        function updateCart() {
+            // Обновляем счетчик на кнопке
+            cartCount.textContent = cart.length;
+            
+            // Общая сумма
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartTotal.textContent = total + ' ₽';
+            
+            // Обновляем модальное окно
+            if (cart.length === 0) {
+                cartItems.style.display = 'none';
+                cartEmpty.style.display = 'block';
+                cartTotalRow.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+            } else {
+                cartItems.style.display = 'block';
+                cartEmpty.style.display = 'none';
+                cartTotalRow.style.display = 'flex';
+                checkoutBtn.style.display = 'block';
+                
+                // Очищаем и перерисовываем список
+                cartItems.innerHTML = '';
+                cart.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'cart-item';
+                    li.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price} ₽</div>
+                        </div>
+                        <button class="cart-item-remove" data-index="${index}">✕</button>
+                    `;
+                    cartItems.appendChild(li);
+                });
+                
+                // Обновляем итоговую сумму
+                cartTotalPrice.textContent = total + ' ₽';
+                
+                // Добавляем обработчики для кнопок удаления
+                document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        cart.splice(index, 1);
+                        updateCart();
+                    });
+                });
+            }
+        }
+        
+        // Добавление товара в корзину
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            
+            // Анимация кнопки
+            cartButton.classList.add('bounce');
+            setTimeout(() => {
+                cartButton.classList.remove('bounce');
+            }, 300);
+        }
+        
+        // Открытие корзины
+        function openCart() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Закрытие корзины
+        function closeCart() {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Обработчики
+        cartButton.addEventListener('click', openCart);
+        
+        closeCartBtn.addEventListener('click', closeCart);
+        
+        cartModal.addEventListener('click', function(e) {
+            if (e.target === cartModal) {
+                closeCart();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && cartModal.classList.contains('active')) {
+                closeCart();
+            }
+        });
+        
+        // Оформление заказа
+        checkoutBtn.addEventListener('click', function() {
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const itemsList = cart.map(item => `• ${item.name} - ${item.price} ₽`).join('\n');
+            alert(`✅ Заказ оформлен!\n\n${itemsList}\n\n━━━━━━━━━━━━━━━\nКоличество блюд: ${cart.length}\nСумма к оплате: ${total} ₽\n\nСпасибо за заказ в «Бурмалде»! ☕`);
+            cart = [];
+            updateCart();
+            closeCart();
+        });
+        
+        // Добавление обработчиков на кнопки "add-to-cart"
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const menuItem = this.closest('.menu-item');
+                const name = menuItem.getAttribute('data-name');
+                const price = parseInt(menuItem.getAttribute('data-price'));
+                addToCart(name, price);
+            });
+        });
+        
+        // Инициализация
+        updateCart();
+    })();
+
+    // ===== МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ =====
+    (function() {
+        const modal = document.getElementById('bookingModal');
+        const orderBtn = document.getElementById('orderBtn');
+        const closeBtn = document.getElementById('closeModal');
+        const submitBtn = document.getElementById('submitBooking');
+        const successBtn = document.getElementById('closeSuccess');
+        const form = document.getElementById('modalForm');
+        const success = document.getElementById('modalSuccess');
+        const navBooking = document.querySelector('.nav-link:last-child');
+        
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            form.classList.remove('hidden');
+            success.classList.remove('show');
+        }
+        
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        orderBtn.addEventListener('click', openModal);
+        
+        if (navBooking) {
+            navBooking.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+        }
+        
+        closeBtn.addEventListener('click', closeModal);
+        
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        submitBtn.addEventListener('click', function() {
+            const name = document.getElementById('guestName').value.trim();
+            const phone = document.getElementById('guestPhone').value.trim();
+            const date = document.getElementById('guestDate').value;
+            const time = document.getElementById('guestTime').value;
+            
+            if (!name || !phone || !date || !time) {
+                alert('Пожалуйста, заполните все поля!');
+                return;
+            }
+            
+            if (phone.length < 10) {
+                alert('Пожалуйста, введите корректный номер телефона.');
+                return;
+            }
+            
+            form.classList.add('hidden');
+            success.classList.add('show');
+        });
+        
+        successBtn.addEventListener('click', closeModal);
+        
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('guestDate').setAttribute('min', today);
+    })();
+
+    // ===== ПЕРЕКЛЮЧЕНИЕ КАТЕГОРИЙ МЕНЮ =====
+    (function() {
+        const coffeeSection = document.getElementById('category-coffee');
+        const foodSection = document.getElementById('category-food');
+        const dessertsSection = document.getElementById('category-desserts');
+        const buttons = document.querySelectorAll('.category-btn');
+        
+        function showCategory(categoryId) {
+            coffeeSection.classList.add('hidden-category');
+            foodSection.classList.add('hidden-category');
+            dessertsSection.classList.add('hidden-category');
+            
+            if (categoryId === 'coffee') {
+                coffeeSection.classList.remove('hidden-category');
+            } else if (categoryId === 'food') {
+                foodSection.classList.remove('hidden-category');
+            } else if (categoryId === 'desserts') {
+                dessertsSection.classList.remove('hidden-category');
+            } else if (categoryId === 'all') {
+                coffeeSection.classList.remove('hidden-category');
+                foodSection.classList.remove('hidden-category');
+                dessertsSection.classList.remove('hidden-category');
+            }
+        }
+        
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const category = this.getAttribute('data-category');
+                buttons.forEach(bt => bt.classList.remove('active'));
+                this.classList.add('active');
+                showCategory(category);
+                
+                const targetSection = document.querySelector('.category-tabs');
+                if(targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        showCategory('all');
+        const allBtn = document.querySelector('.category-btn[data-category="all"]');
+        if(allBtn) allBtn.classList.add('active');
+    })();
+</script>
+</body>
+</html>

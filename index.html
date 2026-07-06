@@ -232,6 +232,12 @@
             <div style="border-top: 2px solid #e9dfd3; padding-top: 20px; margin-top: 10px;">
                 <h3 style="font-size: 1.3rem; font-weight: 700; color: #332418; margin-bottom: 16px;">Данные для доставки</h3>
                 
+                <!-- HoneyPot поле (скрыто от пользователей, но бот его увидит) -->
+                <div style="display: none;">
+                    <label for="honeypotOrder">Оставьте пустым</label>
+                    <input type="text" id="honeypotOrder" name="honeypot" value="">
+                </div>
+                
                 <div class="form-group">
                     <label for="orderName">Ваше имя</label>
                     <input type="text" id="orderName" placeholder="Например: Александр" required>
@@ -247,6 +253,12 @@
                     <input type="tel" id="orderPhone" placeholder="+7 (___)-___-__-__" required>
                 </div>
                 
+                <!-- Captcha: простой вопрос -->
+                <div class="form-group">
+                    <label for="captchaOrder">Сколько будет 2 + 3? (защита от ботов)</label>
+                    <input type="text" id="captchaOrder" placeholder="Введите ответ" required>
+                </div>
+                
                 <button class="cart-checkout-btn" id="submitOrder">Оформить заказ</button>
             </div>
         </div>
@@ -260,6 +272,13 @@
         <div class="modal-form" id="modalForm">
             <h2 class="modal-title">Бронирование столика</h2>
             <p class="modal-subtitle">Заполните форму, и мы ждём вас в «Бурмалде»!</p>
+            
+            <!-- HoneyPot поле (скрыто от пользователей, но бот его увидит) -->
+            <div style="display: none;">
+                <label for="honeypotBooking">Оставьте пустым</label>
+                <input type="text" id="honeypotBooking" name="honeypot" value="">
+            </div>
+            
             <div class="form-group">
                 <label for="guestName">Ваше имя</label>
                 <input type="text" id="guestName" placeholder="Например: Александр" required>
@@ -293,6 +312,13 @@
                     <option value="10">10 гостей</option>
                 </select>
             </div>
+            
+            <!-- Captcha: простой вопрос -->
+            <div class="form-group">
+                <label for="captchaBooking">Сколько будет 5 + 3? (защита от ботов)</label>
+                <input type="text" id="captchaBooking" placeholder="Введите ответ" required>
+            </div>
+            
             <button class="modal-submit" id="submitBooking">Забронировать</button>
         </div>
         <div class="modal-success" id="modalSuccess">
@@ -376,6 +402,8 @@
         const orderName = document.getElementById('orderName');
         const orderAddress = document.getElementById('orderAddress');
         const orderPhone = document.getElementById('orderPhone');
+        const honeypotOrder = document.getElementById('honeypotOrder');
+        const captchaOrder = document.getElementById('captchaOrder');
         
         function updateCart() {
             const total = cart.reduce((sum, item) => sum + item.price, 0);
@@ -442,16 +470,30 @@
         cartButton.addEventListener('click', openCart);
         closeCartBtn.addEventListener('click', closeCart);
         
-        cartModal.addEventListener('click', function(e) {
-            if (e.target === cartModal) closeCart();
-        });
+        // ОТКЛЮЧАЕМ ЗАКРЫТИЕ ПО КЛИКУ НА ОВЕРЛЕЙ
+        // cartModal.addEventListener('click', function(e) {
+        //     if (e.target === cartModal) closeCart();
+        // });
         
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && cartModal.classList.contains('active')) closeCart();
         });
         
-        // Оформление заказа
+        // Оформление заказа с защитой от ботов
         submitOrderBtn.addEventListener('click', async function() {
+            // Проверка HoneyPot
+            if (honeypotOrder.value !== '') {
+                alert('❌ Обнаружена попытка спама!');
+                return;
+            }
+            
+            // Проверка капчи
+            const captchaAnswer = captchaOrder.value.trim();
+            if (captchaAnswer !== '5') {
+                alert('❌ Неправильный ответ на вопрос! Попробуйте снова.');
+                return;
+            }
+            
             const name = orderName.value.trim();
             const address = orderAddress.value.trim();
             const phone = orderPhone.value.trim();
@@ -483,8 +525,6 @@
                 orderDate: new Date().toLocaleString('ru-RU')
             };
             
-            console.log('Отправка заказа:', orderData);
-            
             try {
                 const result = await sendToGoogleSheets(GOOGLE_SCRIPT_URL_ORDER, orderData);
                 
@@ -494,6 +534,7 @@
                     orderName.value = '';
                     orderAddress.value = '';
                     orderPhone.value = '';
+                    captchaOrder.value = '';
                     updateCart();
                     closeCart();
                 } else {
@@ -585,6 +626,8 @@
         const form = document.getElementById('modalForm');
         const success = document.getElementById('modalSuccess');
         const navBooking = document.querySelector('.nav-link:last-child');
+        const honeypotBooking = document.getElementById('honeypotBooking');
+        const captchaBooking = document.getElementById('captchaBooking');
         
         function openModal() {
             modal.classList.add('active');
@@ -609,6 +652,11 @@
         
         closeBtn.addEventListener('click', closeModal);
         
+        // Закрытие по клику на оверлей ОТКЛЮЧЕНО
+        // modal.addEventListener('click', function(e) {
+        //     if (e.target === modal) closeModal();
+        // });
+        
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closeModal();
@@ -616,6 +664,19 @@
         });
         
         submitBtn.addEventListener('click', async function() {
+            // Проверка HoneyPot
+            if (honeypotBooking.value !== '') {
+                alert('❌ Обнаружена попытка спама!');
+                return;
+            }
+            
+            // Проверка капчи
+            const captchaAnswer = captchaBooking.value.trim();
+            if (captchaAnswer !== '8') {
+                alert('❌ Неправильный ответ на вопрос! Попробуйте снова.');
+                return;
+            }
+            
             const name = document.getElementById('guestName').value.trim();
             const phone = document.getElementById('guestPhone').value.trim();
             const date = document.getElementById('guestDate').value;
@@ -640,6 +701,7 @@
                 if (result.success) {
                     form.classList.add('hidden');
                     success.classList.add('show');
+                    captchaBooking.value = '';
                 } else {
                     alert('❌ Ошибка при отправке данных. Попробуйте позже.');
                 }

@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Кофейня «Бурмалда» | Меню</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="modal.css">
-    <link rel="stylesheet" href="cart.css">
 </head>
 <body>
 <div class="app">
@@ -24,14 +22,14 @@
             </nav>
         </header>
 
-        <!-- ГЕРО (баннер с атмосферой) -->
+        <!-- ГЕРО -->
         <section class="hero">
             <h1 class="hero-title">Меню</h1>
             <p class="hero-description">Авторские напитки, уютная выпечка и натуральные десерты. Каждый ингредиент — с душой.</p>
             <button class="hero-button" id="orderBtn">Заказать столик</button>
         </section>
 
-        <!-- КАТЕГОРИИ МЕНЮ: интерактивные вкладки -->
+        <!-- КАТЕГОРИИ -->
         <div class="category-tabs">
             <button class="category-btn active" data-category="all">Всё меню</button>
             <button class="category-btn" data-category="coffee">Кофе & напитки</button>
@@ -39,8 +37,7 @@
             <button class="category-btn" data-category="desserts">Десерты & выпечка</button>
         </div>
 
-        <!-- БЛОКИ МЕНЮ по категориям -->
-        <!-- 1) КОФЕ И НАПИТКИ -->
+        <!-- МЕНЮ -->
         <div id="category-coffee" class="menu-category-section">
             <h2 class="section-title">Ароматный кофе & напитки</h2>
             <div class="menu-grid">
@@ -54,9 +51,9 @@
                     <div class="menu-item-description">Идеальный баланс эспрессо, нежной молочной пенки и бархатистого вкуса.</div>
                     <button class="menu-item-price add-to-cart">290 ₽</button>
                 </div>
-                <div class="menu-item" data-name="Раф масала" data-price="340">
+                <div class="menu-item" data-name="Раф" data-price="340">
                     <div class="menu-item-title">Раф</div>
-                    <div class="menu-item-description">Пряный раф с кардамоном, мускатом и щепоткой корицы. Веганская альтернатива.</div>
+                    <div class="menu-item-description">Пряный раф с кардамоном, мускатом и щепоткой корицы.</div>
                     <button class="menu-item-price add-to-cart">340 ₽</button>
                 </div>
                 <div class="menu-item" data-name="Матча латте" data-price="350">
@@ -77,7 +74,6 @@
             </div>
         </div>
 
-        <!-- 2) ЗАКУСКИ И СЭНДВИЧИ (FOOD) -->
         <div id="category-food" class="menu-category-section hidden-category">
             <h2 class="section-title">Сытные закуски & сэндвичи</h2>
             <div class="menu-grid">
@@ -114,7 +110,6 @@
             </div>
         </div>
 
-        <!-- 3) ДЕСЕРТЫ И ВЫПЕЧКА -->
         <div id="category-desserts" class="menu-category-section hidden-category">
             <h2 class="section-title">Сладкие мгновения</h2>
             <div class="menu-grid">
@@ -151,7 +146,7 @@
             </div>
         </div>
 
-        <!-- ДОПОЛНИТЕЛЬНО: блок преимуществ -->
+        <!-- ПРЕИМУЩЕСТВА -->
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-title">🌱 Зерно direct trade</div>
@@ -171,15 +166,14 @@
             </div>
         </div>
 
-        <!-- Блок "Специальное предложение" с якорем promo -->
-        <div id="promo" style="background: #f8efdf; border-radius: 36px; padding: 24px 32px; margin: 30px 0 20px; text-align: center; scroll-margin-top: 20px;">
-            <p style="font-weight: 600; color: #b45f2b; letter-spacing: 1px;">★ КОМБО-ПРЕДЛОЖЕНИЕ ★</p>
-            <p style="font-size: 1.1rem; margin-top: 8px;">Любой сэндвич + капучино = <strong style="color:#3b2a1f; font-size:1.2rem;">690 ₽</strong> <span style="background: #fff0e0; padding: 2px 12px; border-radius: 30px; margin-left: 12px;">экономия 110₽</span></p>
-            <p style="margin-top: 12px; font-size: 0.9rem; color: #6b4c31;">Действует ежедневно с 12:00 до 16:00</p>
+        <!-- АКЦИИ -->
+        <div id="promo" style="scroll-margin-top: 20px;">
+            <h2 class="section-title">🔥 Акции</h2>
+            <div class="promo-grid" id="promoGrid"></div>
         </div>
     </div>
 
-    <!-- Подвал с якорем contacts -->
+    <!-- ПОДВАЛ -->
     <footer class="footer" id="contacts">
         <div>
             <div class="footer-title">Кофейня «Бурмалда»</div>
@@ -191,13 +185,12 @@
         <div>
             <div class="footer-title">Мы в соцсетях</div>
             <div class="footer__social-chat">
-                <a href="https://vk.com/im/channels/-239931860" class="footer-address">VK</a>
+                <a href="#" class="footer-address">VK</a>
                 <div class="footer-address">&#8226;</div>
                 <div class="footer-address">Telegram</div>
                 <div class="footer-address">&#8226;</div>
                 <div class="footer-address">Instagram</div>
-        </div>
-            
+            </div>
             <div class="footer-hours">Акции и новинки там же</div>
         </div>
         <div class="footer-copyright">
@@ -206,55 +199,75 @@
     </footer>
 </div>
 
-<!-- Кнопка корзины -->
+<!-- КНОПКА КОРЗИНЫ -->
 <button class="cart-button" id="cartButton">
     <span class="cart-icon">🛒</span>
     <span class="cart-count" id="cartCount">0</span>
     <span class="cart-total" id="cartTotal">0 ₽</span>
 </button>
 
-<!-- Модальное окно корзины -->
+<!-- МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
 <div class="cart-modal-overlay" id="cartModal">
     <div class="cart-modal">
         <button class="cart-close-btn" id="closeCartModal">✕</button>
         <h2 class="cart-modal-title">🛒 Корзина</h2>
         <p class="cart-modal-subtitle">Ваши выбранные позиции</p>
+        
+        <!-- Список товаров -->
         <div id="cartContent">
             <div class="cart-empty" id="cartEmpty">
                 <div class="cart-empty-icon">🛒</div>
                 <p>Корзина пуста</p>
                 <p style="font-size: 0.9rem; margin-top: 8px;">Выберите блюда из меню</p>
             </div>
-            <ul class="cart-items" id="cartItems" style="display: none;"></ul>
-            <div class="cart-total-row" id="cartTotalRow" style="display: none;">
+            <ul class="cart-items" id="cartItems"></ul>
+            <div class="cart-total-row" id="cartTotalRow">
                 <span>Итого:</span>
                 <span class="cart-total-price" id="cartTotalPrice">0 ₽</span>
             </div>
-            <button class="cart-checkout-btn" id="checkoutBtn" style="display: none;">Оформить заказ</button>
+        </div>
+
+        <!-- ФОРМА ОФОРМЛЕНИЯ ЗАКАЗА -->
+        <div id="orderForm" style="display: none; margin-top: 20px;">
+            <div style="border-top: 2px solid #e9dfd3; padding-top: 20px; margin-top: 10px;">
+                <h3 style="font-size: 1.3rem; font-weight: 700; color: #332418; margin-bottom: 16px;">Данные для доставки</h3>
+                
+                <div class="form-group">
+                    <label for="orderName">Ваше имя</label>
+                    <input type="text" id="orderName" placeholder="Например: Александр" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderAddress">Адрес доставки</label>
+                    <input type="text" id="orderAddress" placeholder="ул. Садовая, д. 15, кв. 5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderPhone">Номер телефона</label>
+                    <input type="tel" id="orderPhone" placeholder="+7 (___)-___-__-__" required>
+                </div>
+                
+                <button class="cart-checkout-btn" id="submitOrder">Оформить заказ</button>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Модальное окно бронирования -->
+<!-- МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ -->
 <div class="modal-overlay" id="bookingModal">
     <div class="modal">
         <button class="modal-close" id="closeModal">✕</button>
-        
-        <!-- Форма -->
         <div class="modal-form" id="modalForm">
             <h2 class="modal-title">Бронирование столика</h2>
             <p class="modal-subtitle">Заполните форму, и мы ждём вас в «Бурмалде»!</p>
-            
             <div class="form-group">
                 <label for="guestName">Ваше имя</label>
                 <input type="text" id="guestName" placeholder="Например: Александр" required>
             </div>
-            
             <div class="form-group">
                 <label for="guestPhone">Номер телефона</label>
                 <input type="tel" id="guestPhone" placeholder="+7 (___)-___-__-__" required>
             </div>
-            
             <div class="form-row">
                 <div class="form-group">
                     <label for="guestDate">Дата</label>
@@ -265,7 +278,6 @@
                     <input type="time" id="guestTime" required>
                 </div>
             </div>
-            
             <div class="form-group">
                 <label for="guestCount">Количество гостей</label>
                 <select id="guestCount">
@@ -281,11 +293,8 @@
                     <option value="10">10 гостей</option>
                 </select>
             </div>
-            
             <button class="modal-submit" id="submitBooking">Забронировать</button>
         </div>
-        
-        <!-- Сообщение об успехе -->
         <div class="modal-success" id="modalSuccess">
             <div class="modal-success-icon">✅</div>
             <div class="modal-success-title">Столик забронирован!</div>
@@ -296,11 +305,63 @@
 </div>
 
 <script>
+    // ========================================
+    // НАСТРОЙКА АКЦИЙ
+    // ========================================
+    const PROMO_CONFIG = {
+        promo1: {
+            name: 'Капучино + Чизкейк',
+            description: 'Нежный капучино и фирменный чизкейк с маракуйей',
+            price: 100,
+            originalPrice: 680,
+            timeStart: 12,
+            timeEnd: 14,
+            emoji: '☕'
+        },
+        promo2: {
+            name: 'Эспрессо + Круассан',
+            description: 'Классический эспрессо с хрустящим миндальным круассаном',
+            price: 150,
+            originalPrice: 480,
+            timeStart: 8,
+            timeEnd: 11,
+            emoji: '🥐'
+        },
+        promo3: {
+            name: 'Раф + Сэндвич с ростбифом',
+            description: 'Пряный раф и сытный сэндвич с ростбифом',
+            price: 250,
+            originalPrice: 820,
+            timeStart: 15,
+            timeEnd: 18,
+            emoji: '🥪'
+        }
+    };
+
+    // ========================================
+    // ОТПРАВКА В GOOGLE TABLES
+    // ========================================
+    const GOOGLE_SCRIPT_URL_BOOKING = 'https://script.google.com/macros/s/AKfycbxhA8EPtYQsiYPHemZDdu8D-BluMT5zt2petuxntaE82cY0Q1H-c55XrB6bb4JfzMOHpQ/exec';
+    const GOOGLE_SCRIPT_URL_ORDER = 'https://script.google.com/macros/s/AKfycbzR0whB8GAaAQjH6tAxjDthtfV1yiWkaAG5SZWquCBd-RNSHwuEhIpD58rmw_ffTCVzlw/exec';
+
+    function sendToGoogleSheets(url, data) {
+        return fetch(url, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => ({ success: true }))
+        .catch(error => {
+            console.error('Ошибка отправки:', error);
+            return { success: false, error: error.message };
+        });
+    }
+
     // ===== КОРЗИНА =====
     (function() {
         let cart = [];
         
-        // Элементы
         const cartButton = document.getElementById('cartButton');
         const cartModal = document.getElementById('cartModal');
         const closeCartBtn = document.getElementById('closeCartModal');
@@ -310,37 +371,37 @@
         const cartTotalPrice = document.getElementById('cartTotalPrice');
         const cartCount = document.getElementById('cartCount');
         const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
+        const orderForm = document.getElementById('orderForm');
+        const submitOrderBtn = document.getElementById('submitOrder');
+        const orderName = document.getElementById('orderName');
+        const orderAddress = document.getElementById('orderAddress');
+        const orderPhone = document.getElementById('orderPhone');
         
-        // Обновление отображения корзины
         function updateCart() {
-            // Обновляем счетчик на кнопке
-            cartCount.textContent = cart.length;
-            
-            // Общая сумма
             const total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartCount.textContent = cart.length;
             cartTotal.textContent = total + ' ₽';
+            cartTotalPrice.textContent = total + ' ₽';
             
-            // Обновляем модальное окно
             if (cart.length === 0) {
                 cartItems.style.display = 'none';
                 cartEmpty.style.display = 'block';
                 cartTotalRow.style.display = 'none';
-                checkoutBtn.style.display = 'none';
+                orderForm.style.display = 'none';
             } else {
                 cartItems.style.display = 'block';
                 cartEmpty.style.display = 'none';
                 cartTotalRow.style.display = 'flex';
-                checkoutBtn.style.display = 'block';
+                orderForm.style.display = 'block';
                 
-                // Очищаем и перерисовываем список
                 cartItems.innerHTML = '';
                 cart.forEach((item, index) => {
                     const li = document.createElement('li');
                     li.className = 'cart-item';
+                    const isPromo = item.isPromo ? '🔥 ' : '';
                     li.innerHTML = `
                         <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-name">${isPromo}${item.name}</div>
                             <div class="cart-item-price">${item.price} ₽</div>
                         </div>
                         <button class="cart-item-remove" data-index="${index}">✕</button>
@@ -348,10 +409,6 @@
                     cartItems.appendChild(li);
                 });
                 
-                // Обновляем итоговую сумму
-                cartTotalPrice.textContent = total + ' ₽';
-                
-                // Добавляем обработчики для кнопок удаления
                 document.querySelectorAll('.cart-item-remove').forEach(btn => {
                     btn.addEventListener('click', function() {
                         const index = parseInt(this.getAttribute('data-index'));
@@ -362,70 +419,160 @@
             }
         }
         
-        // Добавление товара в корзину
-        function addToCart(name, price) {
-            cart.push({ name, price });
+        window.addToCart = function(name, price, isPromo = false) {
+            cart.push({ name, price, isPromo });
             updateCart();
             
-            // Анимация кнопки
             cartButton.classList.add('bounce');
             setTimeout(() => {
                 cartButton.classList.remove('bounce');
             }, 300);
-        }
+        };
         
-        // Открытие корзины
         function openCart() {
             cartModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         
-        // Закрытие корзины
         function closeCart() {
             cartModal.classList.remove('active');
             document.body.style.overflow = '';
         }
         
-        // Обработчики
         cartButton.addEventListener('click', openCart);
-        
         closeCartBtn.addEventListener('click', closeCart);
         
         cartModal.addEventListener('click', function(e) {
-            if (e.target === cartModal) {
-                closeCart();
-            }
+            if (e.target === cartModal) closeCart();
         });
         
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && cartModal.classList.contains('active')) {
-                closeCart();
-            }
+            if (e.key === 'Escape' && cartModal.classList.contains('active')) closeCart();
         });
         
         // Оформление заказа
-        checkoutBtn.addEventListener('click', function() {
+        submitOrderBtn.addEventListener('click', async function() {
+            const name = orderName.value.trim();
+            const address = orderAddress.value.trim();
+            const phone = orderPhone.value.trim();
+            
+            if (!name || !address || !phone) {
+                alert('Пожалуйста, заполните все поля!');
+                return;
+            }
+            
+            if (phone.length < 10) {
+                alert('Пожалуйста, введите корректный номер телефона.');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Корзина пуста!');
+                return;
+            }
+            
             const total = cart.reduce((sum, item) => sum + item.price, 0);
-            const itemsList = cart.map(item => `• ${item.name} - ${item.price} ₽`).join('\n');
-            alert(`✅ Заказ оформлен!\n\n${itemsList}\n\n━━━━━━━━━━━━━━━\nКоличество блюд: ${cart.length}\nСумма к оплате: ${total} ₽\n\nСпасибо за заказ в «Бурмалде»! ☕`);
-            cart = [];
-            updateCart();
-            closeCart();
+            const itemsList = cart.map(item => `${item.isPromo ? '🔥 ' : ''}${item.name} (${item.price} ₽)`).join('; ');
+            
+            const orderData = {
+                name: name,
+                phone: phone,
+                address: address,
+                items: itemsList,
+                total: total + ' ₽',
+                orderDate: new Date().toLocaleString('ru-RU')
+            };
+            
+            console.log('Отправка заказа:', orderData);
+            
+            try {
+                const result = await sendToGoogleSheets(GOOGLE_SCRIPT_URL_ORDER, orderData);
+                
+                if (result.success) {
+                    alert(`✅ Заказ оформлен!\n\n${itemsList}\n\n━━━━━━━━━━━━━━━\nСумма к оплате: ${total} ₽\n\nСпасибо за заказ в «Бурмалде»! ☕`);
+                    cart = [];
+                    orderName.value = '';
+                    orderAddress.value = '';
+                    orderPhone.value = '';
+                    updateCart();
+                    closeCart();
+                } else {
+                    alert('❌ Ошибка при отправке заказа. Попробуйте позже.');
+                }
+            } catch (error) {
+                alert('❌ Ошибка при отправке заказа. Попробуйте позже.');
+            }
         });
         
-        // Добавление обработчиков на кнопки "add-to-cart"
         document.querySelectorAll('.add-to-cart').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const menuItem = this.closest('.menu-item');
                 const name = menuItem.getAttribute('data-name');
                 const price = parseInt(menuItem.getAttribute('data-price'));
-                addToCart(name, price);
+                window.addToCart(name, price, false);
             });
         });
         
-        // Инициализация
         updateCart();
+    })();
+
+    // ===== ГЕНЕРАЦИЯ АКЦИЙ =====
+    (function() {
+        const promoGrid = document.getElementById('promoGrid');
+        
+        function checkPromoTime(timeStart, timeEnd) {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTime = hours * 60 + minutes;
+            const startTime = timeStart * 60;
+            const endTime = timeEnd * 60;
+            return currentTime >= startTime && currentTime < endTime;
+        }
+        
+        function renderPromos() {
+            promoGrid.innerHTML = '';
+            
+            Object.keys(PROMO_CONFIG).forEach(key => {
+                const promo = PROMO_CONFIG[key];
+                const isActive = checkPromoTime(promo.timeStart, promo.timeEnd);
+                
+                const div = document.createElement('div');
+                div.className = `promo-item ${isActive ? 'active' : 'inactive'}`;
+                
+                const savings = promo.originalPrice - promo.price;
+                
+                div.innerHTML = `
+                    <span class="promo-badge">🔥 АКЦИЯ</span>
+                    <div class="promo-title">${promo.emoji} ${promo.name}</div>
+                    <div class="promo-description">${promo.description}</div>
+                    <div class="promo-price">${promo.price} ₽</div>
+                    <div class="promo-old-price">${promo.originalPrice} ₽</div>
+                    <span class="promo-savings">Экономия ${savings} ₽</span>
+                    <div class="promo-time">⏰ ${String(promo.timeStart).padStart(2, '0')}:00 - ${String(promo.timeEnd).padStart(2, '0')}:00</div>
+                    <button class="promo-add-btn" ${!isActive ? 'disabled' : ''}>
+                        ${isActive ? 'Добавить в корзину' : 'Недоступно'}
+                    </button>
+                `;
+                
+                promoGrid.appendChild(div);
+                
+                const btn = div.querySelector('.promo-add-btn');
+                if (btn && isActive) {
+                    btn.addEventListener('click', function() {
+                        window.addToCart(`${promo.emoji} ${promo.name} (акция)`, promo.price, true);
+                        btn.textContent = '✅ Добавлено!';
+                        setTimeout(() => {
+                            btn.textContent = 'Добавить в корзину';
+                        }, 2000);
+                    });
+                }
+            });
+        }
+        
+        renderPromos();
+        setInterval(renderPromos, 60000);
     })();
 
     // ===== МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ =====
@@ -462,23 +609,18 @@
         
         closeBtn.addEventListener('click', closeModal);
         
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-        
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closeModal();
             }
         });
         
-        submitBtn.addEventListener('click', function() {
+        submitBtn.addEventListener('click', async function() {
             const name = document.getElementById('guestName').value.trim();
             const phone = document.getElementById('guestPhone').value.trim();
             const date = document.getElementById('guestDate').value;
             const time = document.getElementById('guestTime').value;
+            const guests = document.getElementById('guestCount').value;
             
             if (!name || !phone || !date || !time) {
                 alert('Пожалуйста, заполните все поля!');
@@ -490,8 +632,20 @@
                 return;
             }
             
-            form.classList.add('hidden');
-            success.classList.add('show');
+            const formData = { name, phone, date, time, guests };
+            
+            try {
+                const result = await sendToGoogleSheets(GOOGLE_SCRIPT_URL_BOOKING, formData);
+                
+                if (result.success) {
+                    form.classList.add('hidden');
+                    success.classList.add('show');
+                } else {
+                    alert('❌ Ошибка при отправке данных. Попробуйте позже.');
+                }
+            } catch (error) {
+                alert('❌ Ошибка при отправке данных. Попробуйте позже.');
+            }
         });
         
         successBtn.addEventListener('click', closeModal);
@@ -500,7 +654,7 @@
         document.getElementById('guestDate').setAttribute('min', today);
     })();
 
-    // ===== ПЕРЕКЛЮЧЕНИЕ КАТЕГОРИЙ МЕНЮ =====
+    // ===== ПЕРЕКЛЮЧЕНИЕ КАТЕГОРИЙ =====
     (function() {
         const coffeeSection = document.getElementById('category-coffee');
         const foodSection = document.getElementById('category-food');
@@ -531,11 +685,6 @@
                 buttons.forEach(bt => bt.classList.remove('active'));
                 this.classList.add('active');
                 showCategory(category);
-                
-                const targetSection = document.querySelector('.category-tabs');
-                if(targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
             });
         });
         

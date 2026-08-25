@@ -27,6 +27,142 @@ html {
     scroll-behavior: smooth;
 }
 
+
+
+/* ======================================== */
+/* ----- СТИЛИ ДЛЯ КАРТИНОК ТОВАРОВ ----- */
+/* ======================================== */
+
+.menu-item-image {
+    width: 100%;
+    height: 160px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image {
+    transform: scale(1.03);
+}
+
+.menu-item-image .menu-item-emoji {
+    font-size: 4rem;
+    line-height: 1;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image .menu-item-emoji {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Адаптив для картинок */
+@media (max-width: 768px) {
+    .menu-item-image {
+        height: 120px;
+        border-radius: 16px;
+    }
+    .menu-item-image .menu-item-emoji {
+        font-size: 3rem;
+    }
+}
+
+
+/* ======================================== */
+/* ----- СТИЛИ ДЛЯ КАРТИНОК ТОВАРОВ ----- */
+/* ======================================== */
+
+.menu-item-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #f5ede4;
+    border: 2px dashed #d9c6b0;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover .menu-item-image {
+    border-color: #b45f2b;
+    box-shadow: 0 4px 15px rgba(180, 95, 43, 0.15);
+}
+
+.menu-item-image .menu-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: none;
+}
+
+.menu-item-image .menu-item-img.show {
+    display: block;
+}
+
+.menu-item-image .menu-item-placeholder {
+    font-size: 3rem;
+    color: #b8a898;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.menu-item:hover .menu-item-image .menu-item-placeholder {
+    color: #b45f2b;
+    transform: scale(1.1);
+}
+
+/* Когда есть картинка - скрываем плейсхолдер */
+.menu-item-image.has-image .menu-item-placeholder {
+    display: none;
+}
+
+.menu-item-image.has-image .menu-item-img {
+    display: block;
+}
+
+/* Анимация при загрузке картинки */
+.menu-item-img.loaded {
+    animation: imageFadeIn 0.5s ease;
+}
+
+@keyframes imageFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Эффект при наведении на картинку */
+.menu-item:hover .menu-item-image .menu-item-img {
+    transform: scale(1.05);
+}
+
+/* Адаптив для картинок */
+@media (max-width: 768px) {
+    .menu-item-image {
+        height: 140px;
+        border-radius: 16px;
+    }
+    .menu-item-image .menu-item-placeholder {
+        font-size: 2.5rem;
+    }
+}
+
+
 /* ----- ШАПКА / НАВИГАЦИЯ ----- */
 .header {
     display: flex;
